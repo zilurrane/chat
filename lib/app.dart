@@ -1,3 +1,4 @@
+import 'package:chat/routes/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'shared/theme/theme_data.dart';
@@ -13,7 +14,7 @@ class App extends StatelessWidget {
           title: 'Chat',
           theme: ThemeConfig.lightTheme,
           darkTheme: ThemeConfig.darkTheme,
-          home: const Text('Chat'),
+          onGenerateRoute: routes,
           debugShowCheckedModeBanner: false);
     });
   }
