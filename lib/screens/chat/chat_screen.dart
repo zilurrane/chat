@@ -16,10 +16,22 @@ class _ChatScreenState extends State<ChatScreen> {
         "Chat",
         key: const Key("appBar"),
       ),
-      body: const Padding(
-        padding: EdgeInsets.all(30),
-        child: Text("Chat"),
-      ),
+      body: Container(
+          padding: const EdgeInsets.all(15),
+          width: double.infinity,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Card(
+                color: Colors.white,
+                elevation: 1,
+                child: Container(
+                    padding: const EdgeInsets.all(15),
+                    width: double.infinity,
+                    child: const Text("---")),
+              )
+            ],
+          )),
     );
   }
 }
