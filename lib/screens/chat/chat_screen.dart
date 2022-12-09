@@ -1,3 +1,4 @@
+import 'package:chat/screens/chat/chat_list.dart';
 import 'package:flutter/material.dart';
 import '../../widgets/app-bars/custom_app_bar.dart';
 
@@ -16,22 +17,7 @@ class _ChatScreenState extends State<ChatScreen> {
         "Chat",
         key: const Key("appBar"),
       ),
-      body: Container(
-          padding: const EdgeInsets.all(15),
-          width: double.infinity,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Card(
-                color: Colors.white,
-                elevation: 1,
-                child: Container(
-                    padding: const EdgeInsets.all(15),
-                    width: double.infinity,
-                    child: const Text("---")),
-              )
-            ],
-          )),
+      body: const ChatList(key: Key("chat_list")),
     );
   }
 }
