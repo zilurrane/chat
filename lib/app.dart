@@ -14,6 +14,7 @@ class App extends StatelessWidget {
           title: 'Chat',
           theme: ThemeConfig.lightTheme,
           darkTheme: ThemeConfig.darkTheme,
+          themeMode: appState.isDarkMode ? ThemeMode.dark : ThemeMode.light,
           onGenerateRoute: routes,
           debugShowCheckedModeBanner: false);
     });
