@@ -31,7 +31,7 @@ class _ChatListState extends State<ChatList> {
             return ListView.builder(
               shrinkWrap: true,
               itemCount: data.length,
-              itemExtent: 55,
+              itemExtent: 70,
               itemBuilder: (context, index) {
                 Conversation conversation = data[index];
                 return ChatListItem(

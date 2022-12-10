@@ -13,7 +13,7 @@ class ChatListItem extends StatelessWidget {
           color: Colors.white,
           elevation: 1,
           child: Container(
-              padding: const EdgeInsets.all(15),
+              padding: const EdgeInsets.all(5),
               width: double.infinity,
               child: Row(
                 children: [
