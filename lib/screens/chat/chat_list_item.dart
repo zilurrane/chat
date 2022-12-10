@@ -16,7 +16,9 @@ class ChatListItem extends StatelessWidget {
               padding: const EdgeInsets.all(15),
               width: double.infinity,
               child: Row(
-                children: [Text(conversation.title)],
+                children: [
+                  Image.network(conversation.profilePicture),
+                  Text(conversation.title)],
               )),
         ));
   }
