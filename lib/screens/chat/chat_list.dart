@@ -11,6 +11,15 @@ class ChatList extends StatefulWidget {
 }
 
 class _ChatListState extends State<ChatList> {
+  List<String> items = List<String>.generate(10000, (i) => 'Item $i');
+
   @override
-  Widget build(BuildContext context) => const ChatListItem();
+  Widget build(BuildContext context) => ListView.builder(
+        shrinkWrap: true,
+        itemCount: items.length,
+        itemExtent: 55,
+        itemBuilder: (context, index) {
+          return ChatListItem(text: items[index]);
+        },
+      );
 }
