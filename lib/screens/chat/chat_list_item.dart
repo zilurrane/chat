@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import '../../models/conversation.dart';
 
 class ChatListItem extends StatelessWidget {
-  final String text;
-  const ChatListItem({super.key, required this.text});
+  final Conversation conversation;
+  const ChatListItem({super.key, required this.conversation});
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +15,9 @@ class ChatListItem extends StatelessWidget {
           child: Container(
               padding: const EdgeInsets.all(15),
               width: double.infinity,
-              child: Text(text)),
+              child: Row(
+                children: [Text(conversation.title)],
+              )),
         ));
   }
 }

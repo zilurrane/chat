@@ -33,7 +33,10 @@ class _ChatListState extends State<ChatList> {
               itemCount: data.length,
               itemExtent: 55,
               itemBuilder: (context, index) {
-                return ChatListItem(text: data[index].title);
+                Conversation conversation = data[index];
+                return ChatListItem(
+                  conversation: conversation,
+                );
               },
             );
           } else if (snapshot.hasError) {
