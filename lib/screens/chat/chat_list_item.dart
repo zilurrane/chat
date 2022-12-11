@@ -17,7 +17,13 @@ class ChatListItem extends StatelessWidget {
               width: double.infinity,
               child: Row(
                 children: [
-                  Image.network(conversation.profilePicture),
+                  ClipRRect(
+                      borderRadius: BorderRadius.circular(30),
+                      child: Image.network(
+                        conversation.profilePicture,
+                        fit: BoxFit.fill,
+                        width: 50,
+                      )),
                   Text(conversation.title)
                 ],
               )),
