@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../widgets/app-bars/custom_app_bar.dart';
+import '../../widgets/app-bars/chat_window_app_bar.dart';
 
 class ChatWindowScreen extends StatefulWidget {
   const ChatWindowScreen({Key? key}) : super(key: key);
@@ -12,7 +12,7 @@ class _ChatWindowScreen extends State<ChatWindowScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar(
+      appBar: ChatWindowAppBar(
         "Shinchan",
         key: const Key("appBar"),
       ),
