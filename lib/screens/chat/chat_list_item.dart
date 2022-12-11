@@ -13,7 +13,7 @@ class ChatListItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       margin: const EdgeInsets.all(5),
-      child: GestureDetector(
+      child: InkWell(
         onTap: () => _openChatWindow(context),
         child: Card(
           color: Colors.white,
