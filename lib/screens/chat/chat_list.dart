@@ -1,7 +1,10 @@
+import 'package:chat/bloc/conversation_event.dart';
+import 'package:chat/bloc/conversation_state.dart';
 import 'package:chat/models/conversation.dart';
 import 'package:chat/screens/chat/chat_list_item.dart';
-import 'package:chat/services/api.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../bloc/counter_bloc.dart';
 
 class ChatList extends StatefulWidget {
   const ChatList({
@@ -13,36 +16,66 @@ class ChatList extends StatefulWidget {
 }
 
 class _ChatListState extends State<ChatList> {
-  List<String> items = List<String>.generate(10000, (i) => 'Item $i');
-  late Future<List<Conversation>> conversationsFuture;
+  final ConversationBloc _conversationBloc = ConversationBloc();
 
   @override
   void initState() {
     super.initState();
-    conversationsFuture = getConversations();
+    _conversationBloc.add(GetConversationList());
   }
 
   @override
-  Widget build(BuildContext context) => FutureBuilder<List<Conversation>>(
-        future: conversationsFuture,
-        builder: (context, snapshot) {
-          if (snapshot.hasData) {
-            List<Conversation> data = snapshot.data ?? [];
-            return ListView.builder(
-              shrinkWrap: true,
-              itemCount: data.length,
-              itemExtent: 70,
-              itemBuilder: (context, index) {
-                Conversation conversation = data[index];
-                return ChatListItem(
-                  conversation: conversation,
-                );
-              },
-            );
-          } else if (snapshot.hasError) {
-            return Text("${snapshot.error}");
-          }
-          return const Center(child: CircularProgressIndicator());
-        },
-      );
+  void dispose() {
+    _conversationBloc.close();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocProvider(
+        create: (_) => _conversationBloc,
+        child: BlocListener<ConversationBloc, ConversationState>(
+          listener: (context, state) {
+            if (state is ConversationError) {
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(
+                  content: Text(state.message!),
+                ),
+              );
+            }
+          },
+          child: BlocBuilder<ConversationBloc, ConversationState>(
+            builder: (context, state) {
+              if (state is ConversationInitial) {
+                return _buildLoading();
+              } else if (state is ConversationLoading) {
+                return _buildLoading();
+              } else if (state is ConversationLoaded) {
+                return _buildConversationList(context, state.conversations);
+              } else if (state is ConversationError) {
+                return Container();
+              } else {
+                return Container();
+              }
+            },
+          ),
+        ));
+  }
+
+  Widget _buildConversationList(
+      BuildContext context, List<Conversation> conversations) {
+    return ListView.builder(
+      shrinkWrap: true,
+      itemCount: conversations.length,
+      itemExtent: 70,
+      itemBuilder: (context, index) {
+        Conversation conversation = conversations[index];
+        return ChatListItem(
+          conversation: conversation,
+        );
+      },
+    );
+  }
+
+  Widget _buildLoading() => const Center(child: CircularProgressIndicator());
 }

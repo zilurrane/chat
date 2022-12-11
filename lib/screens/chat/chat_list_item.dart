@@ -18,7 +18,8 @@ class ChatListItem extends StatelessWidget {
               child: Row(
                 children: [
                   Image.network(conversation.profilePicture),
-                  Text(conversation.title)],
+                  Text(conversation.title)
+                ],
               )),
         ));
   }
