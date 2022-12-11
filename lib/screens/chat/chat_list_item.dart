@@ -5,10 +5,16 @@ class ChatListItem extends StatelessWidget {
   final Conversation conversation;
   const ChatListItem({super.key, required this.conversation});
 
+  void _openChatWindow(BuildContext context) {
+    Navigator.of(context).pushNamed('/chat-window');
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
-        margin: const EdgeInsets.all(5),
+      margin: const EdgeInsets.all(5),
+      child: GestureDetector(
+        onTap: () => _openChatWindow(context),
         child: Card(
           color: Colors.white,
           elevation: 1,
@@ -33,15 +39,16 @@ class ChatListItem extends StatelessWidget {
                       children: [
                         Text(
                           conversation.title,
-                          style: const TextStyle(
-                              fontWeight: FontWeight.bold),
+                          style: const TextStyle(fontWeight: FontWeight.bold),
                         ),
                         const Text("This is sample message text")
                       ],
                     ),
-                  )
+                  ),
                 ],
               )),
-        ));
+        ),
+      ),
+    );
   }
 }
