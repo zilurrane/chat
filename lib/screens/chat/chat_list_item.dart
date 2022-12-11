@@ -24,7 +24,22 @@ class ChatListItem extends StatelessWidget {
                         fit: BoxFit.fill,
                         width: 50,
                       )),
-                  Text(conversation.title)
+                  Container(
+                    padding:
+                        const EdgeInsets.symmetric(vertical: 5, horizontal: 15),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          conversation.title,
+                          style: const TextStyle(
+                              fontWeight: FontWeight.bold),
+                        ),
+                        const Text("This is sample message text")
+                      ],
+                    ),
+                  )
                 ],
               )),
         ));

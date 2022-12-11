@@ -64,17 +64,19 @@ class _ChatListState extends State<ChatList> {
 
   Widget _buildConversationList(
       BuildContext context, List<Conversation> conversations) {
-    return ListView.builder(
-      shrinkWrap: true,
-      itemCount: conversations.length,
-      itemExtent: 70,
-      itemBuilder: (context, index) {
-        Conversation conversation = conversations[index];
-        return ChatListItem(
-          conversation: conversation,
-        );
-      },
-    );
+    return Container(
+        margin: const EdgeInsets.symmetric(vertical: 15),
+        child: ListView.builder(
+          shrinkWrap: true,
+          itemCount: conversations.length,
+          itemExtent: 70,
+          itemBuilder: (context, index) {
+            Conversation conversation = conversations[index];
+            return ChatListItem(
+              conversation: conversation,
+            );
+          },
+        ));
   }
 
   Widget _buildLoading() => const Center(child: CircularProgressIndicator());
