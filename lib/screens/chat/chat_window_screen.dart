@@ -11,6 +11,8 @@ class ChatWindowScreen extends StatefulWidget {
 class _ChatWindowScreen extends State<ChatWindowScreen> {
   @override
   Widget build(BuildContext context) {
+    final conversationId = ModalRoute.of(context)!.settings.arguments;
+
     return Scaffold(
       appBar: ChatWindowAppBar(
         "Shinchan",

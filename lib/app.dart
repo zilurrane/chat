@@ -15,7 +15,8 @@ class App extends StatelessWidget {
           theme: ThemeConfig.lightTheme,
           darkTheme: ThemeConfig.darkTheme,
           themeMode: appState.isDarkMode ? ThemeMode.dark : ThemeMode.light,
-          onGenerateRoute: routes,
+          onGenerateRoute: generatedRoutes,
+          routes: routes,
           debugShowCheckedModeBanner: false);
     });
   }

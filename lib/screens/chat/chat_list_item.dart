@@ -6,7 +6,7 @@ class ChatListItem extends StatelessWidget {
   const ChatListItem({super.key, required this.conversation});
 
   void _openChatWindow(BuildContext context) {
-    Navigator.of(context).pushNamed('/chat-window');
+    Navigator.of(context).pushNamed('/chat-window', arguments: conversation.id);
   }
 
   @override
